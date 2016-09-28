@@ -1495,7 +1495,7 @@ $(".rotate").textrotator({
 
 	/* discus */
 	/* * * CONFIGURATION VARIABLES * * */
-	var disqus_shortname = 'thnkUtility';
+	var disqus_shortname = 'intellitect';
 
 	/* * * DON'T EDIT BELOW THIS LINE * * */
 	(function() {
