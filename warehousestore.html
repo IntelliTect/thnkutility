@@ -91,8 +91,8 @@
                 <li><a href="index.html#portfolio" itemprop="url">
                     <span itemprop="name">Portfolio</span>
                 </a></li>
-                
-                <li><a href="#blog" itemprop="url">
+
+                <li><a href="utilityblog.html#blog" itemprop="url">
                     <span itemprop="name">Blog</span>
                 </a></li>
 
@@ -110,80 +110,71 @@
 <header id="header" class="home-parallax home-fade dark-bg header-inner">
     <div class="color-overlay"></div>
     <div class="container">
-        <h1>Blog</h1>
+        <h1>Thnk.Utility! Blog</h1>
         <div class="breadcrumb">
-            <a href="index.html">Home</a> <i class="fa fa-angle-double-right"></i> <a href="#blog">Blog</a>
+            <a href="#">Home</a> <i class="fa fa-angle-double-right"></i> <a href="utilityblog.html">Blog</a>
             
         </div>
     </div>
 </header>
-<!-- Blog -->
-<section id="blog" class="section blog">
+
+<section id="blog-single" class="section blog blog-standard">
     <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <!--Blog Post-->
+<div class="row blog-post">
+    <div class="col-md-12">
+        <div class="featured-image">
+            <img src="assets/images/blog/2.jpg" class="img-responsive" alt=""/>
+        </div>
+        
+        <h2 class="post-title">
+            <a href="blog__single__full_width.html">Big Data/Bad Data?</a>
+        </h2>
+        <div class="post-meta">
+            by <a href="#">James F.</a>
+            <span>|</span>
+            <a href="#">10 Sep</a>
+            <span>|</span>
+        </div>
 
-        <div id="blogContent" class="section-content">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="blog-post">
-                        <header>
-                            <h4 class="date">28<br>Sep</h4>
-                            <div class="blog-element">
-                                <img class="img-responsive" src="assets/images/blog/1.jpg" alt="">
-                            </div>
-                        </header>
-                        <div class="blog-content">
-                            <h4><a href="ccbautomation.html">Oracle’s Customer Care & Billing System</a></h4>
-                            <div class="post-meta">
-                                <span>By <a href="#">James F.</a></span>
-                            </div>
-                            <p>Oracle’s Customer Care and Billing System, also known as CC&B, ...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="blog-post">
-                        <header>
-                            <h4 class="date">20<br>Sep</h4>
-                            <div class="blog-element">
-                                <img class="img-responsive" src="assets/images/blog/2.jpg" alt="">
-                            </div>
-                        </header>
-                        <div class="blog-content">
-                            <h4><a href="autonomousgrid.html">Autonomous Grid</a></h4>
-                            <div class="post-meta">
-                                <span>By <a href="#">James F.</a></span>
-                            </div>
-                            <p>How Machine Learning and the Internet of Things will transform the grid ...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="blog-post">
-                        <header>
-                            <h4 class="date">10<br>Sep</h4>
-                            <div class="blog-element">
-                                <img class="img-responsive" src="assets/images/blog/3.jpg" alt="">
-                            </div>
-                        </header>
-                        <div class="blog-content">
-                            <h4><a href="warehousestore.html">Big Data/Bad Data?</a></h4>
-                            <div class="post-meta">
-                                <span>By <a href="#">James F.</a></span>
-                            </div>
-                            <p>Sometimes process is the issue, not the data...</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="post-content">
+            <p>Recently, I had the pleasure of working with a large utility to help them process and find bad data in their analytics as well as help with overall efficiencies.</p>
+            <p>In my first meeting, I was told "We have lots of bad data".  In the days that followed I discovered what that meant was "We don't understand our data to know if it's bad"</p>
+            <p>After 2 weeks of investigating across different departments and company processes, I found that what in fact was the issue, was that no one knew what data was being used when, where or how, and what was being applied to the data to get the results.</p>
+            <p>This in turn resulted in the perception of "Bad Data" when in fact, it was simply bad process flows and controls in the company.</p>
+            <p>Once these processes were accounted for and in writing, we then turned to the actual work of making the "bad data", good again. By good, I mean applying the same functions and rules against the data to return results consistent company wide. In addition, queries took anywhere from 3 - 5 hours for large time series, so we needed to reduce those to be more efficient.</p>
+            <ul>
+              <li>Step 1: Review and learn why the results and queries took so long.<br>
+                This step I ran profiler, reviewed indexes and reviewed architecture. What I found was that most queries were written with multi-pass approaches and lots of joins without taking advantage of more efficient paths for SQL. in steps CTE, CTE or Cross Table Expressions allow for SQL to pass over the data just once and return the data much faster. In these cases, CTE and indexes sped up queries over 600%. We brought times down from 3-5 hours to 3-5 minutes. That accounts for close to 3 weeks of work per year saved.</li>
+              <li>Step 2: Provide some sort of managed code structure for applying company wide standards to data<br>
+                This step was a little bit of a harder step, not so much from a technical perspective, but from a user perspective. How does one build SQL that allows for multiple users fast easy access, while allowing IT to update easily and in 1 place? The answer was Scalar Table Functions. These functions when written properly can allow for powerful cross apply and expedient processing of data in a standard, structured method. Imagine taking 50 lines of a query and reducing it to "Select * from MyFunction('Date','Code')" where the MyFunction represents a rich cross tabular result set with inputs set to your needed variables and the output ready for quick input to Excel, BI tools etc... In addition, using these inside existing other queries also allowed for better usability. IE: "Select * from MyTable where ID not in(Select ID from MyBadDataFunction('Date'))"</li>
+              <li>Step 3: Provide a global approach for business and IT to move to a unified front<br>
+                This last step, requires buy in across multiple lines of business, however once in sync, is the most powerful. Rather than thousands of disparate processes and queries and told company wide with no central controls, we now have a singularity of data with all applied metrics and processes applied, to ensure all users company wide are seeing the exact same data when they need it, and as they need it. If you are in business, think (Instant gratification and lots of manpower savings). If you are in IT, think (instant peace of mind and centralized planning with auditing built in)</li>
+            </ul>
+            <p>Once this project completed, we found that not only was the data not bad, but that process and understanding of tools used inside the company were what needed some polishing.</p>
+            
+<p>To see some simple samples and approaches you can look to the following:</p>
+            <ul>
+              <li>http://machinelearningmastery.com/how-to-get-started-with-machine-learning-algorithms-in-r/</li>
+              <li>https://azure.microsoft.com/en-us/documentation/articles/machine-learning-r-quickstart/</li>
+            </ul>
+            <p>In addition to these fine articles. Intellitect provides world class architects and data analysis services that include Machine Learning templating, automation and scaled out data lakes for your future as a Utility or PUD.</p>
+            <p>Contact us today for more information on how we can help you!</p>
+            <p>Intellitect.com - James Ferguson, Director of Business Relationships, (208) 964-5086 | james.ferguson@intellitect.com</p>
+        </div>
+
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+    </div>
+</div>
+<!--Blog Post end-->
             </div>
-        </div><!--/#blogContent-->
-
-        <!--<div class="text-center">
-            <a id="loadBlogPosts" class="btn btn-dark">Load More <span class="caret"></span></a>
-        </div>-->
-
-    </div><!--/.container-->
+        </div>
+    </div>
 </section>
-<!-- Blog -->
 
 <!-- Footer widgets -->
 <section id="footer-widgets" class="section footer-widgets dark-bg">
