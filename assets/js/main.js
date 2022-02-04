@@ -87,7 +87,7 @@ $(document).ready(function () {
             zoom: 11,
             scrollwheel: false,
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(47.65289551565907, -117.43814726934703), // WA
+            center: new google.maps.LatLng(47.6528, -117.4381), // WA
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -103,7 +103,7 @@ $(document).ready(function () {
 
         // Let's also add a marker while we're at it
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(47.65289551565907, -117.43814726934703),
+            position: new google.maps.LatLng(47.6528, -117.4381),
             map: map,
             title: 'Snazzy!'
         });
